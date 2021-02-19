@@ -1,37 +1,41 @@
 const base_url = "http://localhost:3000";
 document.getElementById("spc_form").style.display = "none";
 document.getElementById("oth_form").style.display = "none";
-document.getElementById("qrcode_scan").style.display="none";
+document.getElementById("qrcode_scan").style.display = "none";
+let bot_status = document.getElementById("bot_info");
 
 getData();
+//update qr code on web socket recieve
 var pusher = new Pusher("0fdf0851bfed97e22bf0", {
   cluster: "eu",
 });
 var channel = pusher.subscribe("chan");
 channel.bind("qr", (data) => {
-  document.getElementById("qrloading").style.display="none"
-  document.getElementById("qrinstructions").style.display="block"
-
+  document.getElementById("qrloading").style.display = "none";
+  document.getElementById("qrinstructions").style.display = "block";
   jQuery("#qrcode").qrcode({
     text: data,
+    render: "canvas",
   });
 });
 
+//generate qr code
 function generateQrCode() {
-  document.getElementById("qrcode_scan").style.display="block";
-  document.getElementById("qrloading").style.display="block"
-  document.getElementById("qrinstructions").style.display="none"
+  document.getElementById("qrcode_scan").style.display = "block";
+  document.getElementById("qrloading").style.display = "block";
+  document.getElementById("qrinstructions").style.display = "none";
 
   fetch(base_url + "/updatecred")
     .then((response) => response.json())
     .then((data) => {
       pusher.disconnect();
       alert(data.message);
-      document.getElementById("qrcode_scan").style.display="none"
-      document.getElementById("qrcode").style.display="none"
+      document.getElementById("qrcode_scan").style.display = "none";
+      document.getElementById("qrcode").style.display = "none";
     });
 }
 
+//get data info from db
 function getData() {
   fetch(base_url + "/dbdata")
     .then((response) => response.json())
@@ -51,13 +55,19 @@ function getData() {
         document.getElementById("bot_info").innerHTML = data.message.toggle;
 
         var options = "";
-        options += "<option> " + "select client" + "</option>";
+        options += "<option> " + "select none client" + "</option>";
         for (var i = 0, len = data.message.clients.length; i < len; i++) {
           var item = data.message.clients[i];
           options +=
             "<option> " + item.substring(0, item.indexOf("@")) + "</option>";
         }
         document.getElementById("dropdown").innerHTML = options;
+
+        if (bot_status.innerHTML === "on") {
+          bot_status.style.color = "greenyellow";
+        } else {
+          bot_status.style.color = "red";
+        }
       } else {
         alert(data.message);
       }
@@ -69,30 +79,38 @@ function listItem(arr) {
     let listTag = document.createElement("li");
     listTag.innerHTML = a.substring(0, a.indexOf("@"));
     listTag.id = a;
+    listTag.className="list-group-item"
     document.getElementById("list").appendChild(listTag);
   }
 }
 
+//add client to list
 function addToList() {
   var fieldVal = document.getElementById("myField").value.trim();
   postData(base_url + "/addclient", {
     number: fieldVal,
   })
     .then((data) => {
-      alert(data.message);
+      if (data.succcess === true) {
+        listItem([data.message]);
+        document.getElementById("myField").value = "";
+      } else {
+        alert(data.message);
+      }
     })
     .catch((err) => {
       console.log(err);
     });
 }
 
+//remove none client number
 function removeList() {
   postData(base_url + "/removeclient", {
     number: document.getElementById("dropdown").value,
   })
     .then((data) => {
       if (data.succcess === true) {
-        alert(data.message);
+        location.reload();
       }
     })
     .catch((err) => {
@@ -156,16 +174,25 @@ document.getElementById("sub_oth_form").addEventListener("click", (e) => {
     });
 });
 
+//toggle bot on and off
 document.getElementById("toggle").addEventListener("change", (e) => {
   e.preventDefault();
-  document.getElementById("bot_loading").innerHTML=`Bot is turning ${document.getElementById("toggle").value}...`
+  document.getElementById("bot_loading").innerHTML = `Bot is turning ${
+    document.getElementById("toggle").value
+  }...`;
   postData(base_url + "/toggle", {
     toggle: document.getElementById("toggle").value,
   })
     .then((data) => {
-      console.log(data)
-      document.getElementById("bot_loading").innerHTML=""
-      document.getElementById("bot_info").innerHTML =  document.getElementById("toggle").value;
+      document.getElementById("bot_loading").innerHTML = "";
+      document.getElementById("bot_info").innerHTML = document.getElementById(
+        "toggle"
+      ).value;
+      if (document.getElementById("toggle").value === "on") {
+        bot_status.style.color = "greenyellow";
+      } else {
+        bot_status.style.color = "red";
+      }
       alert(data.message);
     })
     .catch((err) => {
@@ -173,6 +200,8 @@ document.getElementById("toggle").addEventListener("change", (e) => {
     });
 });
 
+
+//post data method
 function postData(url, data) {
   return new Promise((res, rej) => {
     var myHeaders = new Headers();

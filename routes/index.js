@@ -40,6 +40,7 @@ router.get("/updatecred", async (req, res) => {
       cluster: process.env.PUSHER_CLUSTER,
     });
     const conn = new WAConnection();
+
     conn.on("qr", (qr) => {
       pusher.trigger("chan", "qr", qr);
     });
@@ -116,7 +117,7 @@ router.post("/addclient", async (req, res) => {
       } else { let num = clients + `|${req.body.number}@s.whatsapp.net`;
         await redis.set("clients", num);
 
-        res.json({ succcess: true, message: "client added successfully" });
+        res.json({ succcess: true, message: `${req.body.number}@s.whatsapp.net` });
       }
     }
   } catch (e) {
@@ -134,7 +135,7 @@ router.post("/removeclient", async (req, res) => {
       list.splice(list.indexOf(req.body.number + "@s.whatsapp.net"), 1);
       if(list.length===0){
         await redis.del("clients")
-        res.json({ succcess: true, message: "non client removed successfully" });
+        res.json({ succcess: true, message: "none client removed successfully" });
       }else{
         let val= list.join("|")
         await redis.set("clients", val);
