@@ -1,0 +1,91 @@
+<html>
+  <head>
+    <title>Bot Manager</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+    <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+    <script src="javascripts/jquery.qrcode.js"></script>
+    <script src="javascripts/qrcode.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body class="container">
+    <h1>Bot is currently <span style="color:greenyellow;" id="bot_info"></span></h1>
+
+
+    <div align="center">
+      <div id="qrcode"></div>
+      <div id="qrcode_scan" class="card" style="width: 18rem;">
+        <div id="qrcode"></div>
+        <div class="card-body">
+          <small id="qrloading">loading qr code...</small>
+          <p id="qrinstructions" class="card-text">Open whatsapp and scan qr code</p>
+        </div>
+      </div>
+    </div>
+    
+
+    <button onclick="generateQrCode()">generate QR</button>
+
+
+    
+
+      <div style="display: flex;">
+        <!-- for special clients -->
+    <div class="card" style="width: 18rem">
+      <div id="show_spc" class="card-body">
+        <h5 class="card-title">Special message</h5>
+        <p id="special_msg" class="card-text"></p>
+        <a href="#" id="show_spc_form" class="card-link">Edit message</a>
+      </div>
+      <div id="spc_form">
+        <textarea
+          id="special_field"
+          placeholder="messsage for special client"
+          style="height: 300px; width: 300px;"
+        ></textarea>
+        <a href="#" id="sub_spc_form" class="card-link">Submit</a>
+        <a href="#" id="hide_spc_form" class="card-link">Cancel</a>
+      </div>
+    </div>
+
+    <!-- for other clients -->
+    <div class="card" style="width: 18rem;">
+      <div id="show_oth" class="card-body">
+        <h5 class="card-title">Other message</h5>
+        <p id="other_msg" class="card-text"></p>
+        <a href="#" id="show_oth_form" class="card-link">Edit message</a>
+      </div>
+      <div id="oth_form">
+        <textarea
+          id="other_field"
+          placeholder="messsage for other client"
+          style="height: 300px; width: 300px;"
+        ></textarea>
+        <a href="#" id="sub_oth_form" class="card-link">Submit</a>
+        <a href="#" id="hide_oth_form" class="card-link">Cancel</a>
+      </div>
+    </div>
+    </div>
+
+    <ul id="list"></ul>
+
+    <input id="myField" placeholder="add clients" type="number" />
+    <button onclick="addToList()">submit</button>
+    
+    <select id="dropdown"></select>
+    <button onclick="removeList()">remove</button>
+
+    <select id="toggle">
+      <option>Toggle bot</option>
+      <option value="on">On</option>
+      <option value="off">Off</option>
+    </select>
+    <small id="bot_loading"></small>
+
+    <script src="javascripts/index.js"></script>
+  </body>
+</html>
