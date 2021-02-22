@@ -2,6 +2,7 @@ const Redis = require("ioredis");
 const redis = new Redis();
 var wa_interact = require("./whatsapp");
 const pattern = new RegExp("^[0-9]+$");
+var { MessageType } = require("@adiwajshing/baileys");
 
 exports.hydrate = async (conn) => {
   try {
@@ -27,28 +28,39 @@ exports.hydrate = async (conn) => {
       ) {
         //do nothing
       } else {
-        const state = await redis.get(`${msg.jid}`);
-        const msg_history = await conn.loadMessages(msg.jid, 10);
-        if (msg.messages) {
-          //mark message as read
-          await conn.chatRead(msg.jid);
-        }
-        //if state is null and has chat history
-        if (state === null && msg_history.messages.length > 1) {
-          await redis.set(`${msg.jid}`, "welcome", "EX", 60 * 60 * 24);
-          await conn.sendMessage(msg.jid, old_customers, MessageType.text);
-        } else if (state === null && msg_history.messages.length < 2) {
-          await redis.set(`${msg.jid}`, "welcome", "EX", 60 * 60 * 24);
-          await conn.sendMessage(msg.jid, new_customers, MessageType.text);
-        } else {
-          if (msg.messages) {
+        if (msg.messages!==undefined) {
+          const state = await redis.get(`${msg.jid}`);
+          const msg_history = await conn.loadMessages(msg.jid, 10);
+
+          //if state is null and has chat history
+          if (state === null && msg_history.messages.length > 1) {
+            //mark message as read
+            await conn.chatRead(msg.jid);
+            await redis.set(`${msg.jid}`, "welcome", "EX", 60 * 60 * 24);
+            await conn.sendMessage(msg.jid, old_customers, MessageType.text);
+            return
+          } else if (state === null && msg_history.messages.length < 2) {
+            //mark message as read
+            await conn.chatRead(msg.jid);
+            await redis.set(`${msg.jid}`, "welcome", "EX", 60 * 60 * 24);
+            await conn.sendMessage(msg.jid, new_customers, MessageType.text);
+            return
+          } else if (state === "welcome") {
             //get converstion
             let chat = msg.messages.array[0].message.conversation;
-            if (chat.match(pattern)) {
+            if (
+              chat.match(pattern) ||
+              chat.toLowerCase().trim() === "bola" ||
+              chat.toLowerCase().trim() === "back" ||
+              chat.toLowerCase().trim() === "full"
+            ) {
               wa_interact.interactive_reply(conn, chat, msg.jid);
-            } else {
-              //do nothing
             }
+            return
+          } else if (state === "dont_reply") {
+            return
+          } else {
+            return
           }
         }
       }

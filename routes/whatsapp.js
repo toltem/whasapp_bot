@@ -1,5 +1,10 @@
 var { MessageType } = require("@adiwajshing/baileys");
 const pattern = new RegExp("^[0-9]+$");
+const fs =require("fs")
+const Redis = require("ioredis");
+const redis = new Redis();
+
+
 var hydrate=require("./hydrate")
 exports.whatsapp = async (conn, req, res) => {
   try {
@@ -32,12 +37,19 @@ exports.whatsapp = async (conn, req, res) => {
 };
 
 exports.interactive_reply=async(conn, chat, number)=> {
-  const num_req = parseInt(chat.match(pattern)[0]);
+  let answers=JSON.parse(fs.readFileSync("answers.json",  { encoding: 'utf-8' }))
+  if(chat.toLowerCase().trim()==="back"){
+    await conn.chatRead(number);
+    await conn.sendMessage(number, "These are the optios again", MessageType.text)
+  }else if(chat.toLowerCase().trim()==="bola"){
+    await redis.set(`${number}`, "dont_reply", "EX", 60 * 60 * 24);
+    await conn.sendMessage(number, "Bola would be right with you", MessageType.text)
+  }else if(chat.toLowerCase().trim()==="full"){
+    await redis.set(`${number}`, "dont_reply", "EX", 60 * 60 * 24);
+  }else if(chat.match(pattern)){
+    await conn.chatRead(number);
+    await conn.sendMessage(number, "get response from answer", MessageType.text)
 
-  if (num_req === 1) {
-    await conn.sendMessage(number, "message for 1", MessageType.text);
-  } else {
-    await conn.sendMessage(number, "message for 2", MessageType.text);
   }
 }
 
