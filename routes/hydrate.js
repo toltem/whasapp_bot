@@ -60,6 +60,7 @@ exports.hydrate = async (conn) => {
           } else if (state === "dont_reply") {
             return
           } else {
+            await conn.chatRead(msg.jid);
             return
           }
         }
