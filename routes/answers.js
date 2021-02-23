@@ -1,42 +1,82 @@
 exports.answers = () => {
   const answer = {
     welcome: `
-I am Available Today!
-        
 To buy code - Type *1*
 Available packages - Type *2*
 Official account numbers - Type *3*
 Working hours and Days off  - Type *4*
 Know more About Racksterli - Type *5*
-How to refer n upgrade - Type *6*
+How to refer/upgrade/renew - Type *6*
 How to do multiple accounts - Type *7*
-Cash out issue - Type *8*
-User already exist - Type *9*
+Cash out issues - Type *8*
+Issues with your Code/Password - Type *9*
 Join my group/community - Type *10*
 For other inquires from me - Type *Bola*
         
-*IMPORTANT TO NOTE*‼️
+*IMPORTANT TO NOTE* ‼️
 - Your bank name and Full name you used in registering must tally at all times. 
+( _at least one name must tally_ )
 - Do not use a student Account 
         
 Thank you for contacting Bola ❤️`,
 
+confirm:`
+Please note that it doesn’t matter who is using the code or who you are paying for. All information required is that of the person that sent money to my account. 
+
+To comfirm your payment Kindly send the following:
+
+*If you sent with Ussd, Mobile Transfer or App*
+- Your full name
+- Bank paid from
+- Amount paid and Package(s) needed
+- Exact time of transaction 
+(Please do not send a screenshot)
+
+*If you sent through Pos*
+- Please ask the Pos People for their name/the name they registered their account with which is what will show here
+- Your Full name
+- Amount paid and Package(s) needed
+- Exact time of transaction 
+- Amount paid
+(Please do not send a Screenshot)
+
+*If you sent through Atm*
+- An sms debit alert screenshot or the address of where the Atm is situated 
+- Your full name
+- Amount paid and Package(s) needed
+- Exact time of transaction
+
+*PLEASE NOTE I WILL REQUIRE YOUR PATIENCE* 🙏
+_There’s alot of traffic here but i will attend to you_ ❤️
+
+To go back to the main menu - Type *Back*`,
+
+reply_confirm:`
+Thanks alot for your patronage 
+
+Kindly be patient for me to confirm your payment and give you your code, i will be with you shortly ❤️
+
+_Please note that repeated messages and calls only delays my response to you because it keeps pushing your chat to the top_
+
+*So please be patient* 🙏
+
+Thank you❤️
+`,
+
     1: `
 For a very fast Response, please contact any of my personal assistants. (Click the link in front of their names)
+
+*TUNJI* tinyurl.com/mrfpkf18
 
 *JAKE* tinyurl.com/4omaky7r
     
 *LISA* tinyurl.com/nsock2o5
-    
-*TUNJI* tinyurl.com/mrfpkf18
-    
+        
 *QUWAM* tinyurl.com/5effnkdz
     
 *PAUL* tinyurl.com/4kkpfnge
     
 *They are all directly connected to me(Bola Vendor) so please do not worry at all*
-    
-Please note,  my Dm is always full with requests directly from the site and also questions from existing users and also resolving registration issues.  So I beg you from the bottom of my heart to use their service☺️
     
 ALL PACKAGES ARE AVAILABLE AT ALL TIMES ON THE TEAM
     
@@ -48,51 +88,46 @@ Zenith Bank
 Current 
 Olabode Olatundun Oyebola 
     
-Please Type *Confirm Payment* immediately you have made your payment. 
+Please Type *CONFIRM PAYMENT* immediately you have made your payment. 
     
 *PLEASE NOTE*
 - Ussd/mobile transfer, ATM n POS transfers are all accepted
 - You can pay for someone and someone can pay for you
 - If you are buying more than one package, please pay all together at once 
 - If your bank has *limit/restrictions* issues and you must pay multiple times, please add #50naira charges to each transaction (e.g you want to buy gold package and you will transfer 6times, your charges will be 50naira multiplied by 6 = #300naira)
-    
+
+Thank you for contacting Bola ❤️
 To go back to the main menu - Type *Back*`,
 
     8: `
-*Best Time to Cashout*
+*BEST TIME TO CASHOUT*
 - Logout 
 - During the week, Check between 8:00am-10:00am
 - During weekends, check between 1:00am-8:30am
-(i am sure cashout is green at these time)
+(I am sure cashout is green at these time)
 
-
-
-*For Delayed Payment and Other Issues *
-
+*FOR DELAYED PAYMENTS AND OTHER ISSUES*
 Please note that you are to contact customer care and i can not resolve anything on my end. 
 
-Follow the advice below on how to reach customer care and get a response. 
+*Follow the advice below on how to reach customer care and get a response.* 👇🏻
+- Choose *just one* social media to reach them on. (Facebook, Instagram, Telegram or Twitter)
+_reports from customer care reached me that when you contact them on all channel, they tend to pend your request this is to avoid double payments and confusion_
 
-- Choose just one social media to reach them on. (Facebook, Instagram, Telegram or Twitter)
-reports from customer care reached me that when you contact them on all channel, they tend to pend your request this is to avoid double payments and confusion
+- Go *straight to the point* and drop all the information you believe they will need. 
+( _Your username , earnings, date of cashout, account number n dashboard_ )
 
-- Go straight to the point and drop all the information you believe they will need. 
-(Your username , earnings, date of cashout, account number n dashboard).
-
-- Be polite
+- *Be polite*
 Remember they are also humans and also understand pressure with very many messages to deal with. Be the different one in their Dm
 
-- Be patient and Wait
-Racksterli customer care replies within 24-48hrs. 
-Don’t message and expect a response in 30mins, sorry but you wont get it🥺. This is because there are so many other messages there for them. 
+- *Be patient and Wait*
+Racksterli customer care replies within 24-48hrs. Don’t message and expect a response in 30mins, sorry but you wont get it🥺. This is because there are so many other messages there for them. 
 
-Be kind and understanding to give them the time frame required. After 48hrs and you receive no response, then you have every right to message them again with a reminder 
+_Be kind and understanding to give them the time frame required. After 48hrs and you receive no response, then you have every right to message them again with a reminder_
 
-- Please i can not solve any payment issues but if you follow my advice, your issues will definitely be resolved. 
-Many people i know have had theirs resolved in due time, yours will not be different 🙏
+*Please i can not solve any payment issues but if you follow my advice, your issues will definitely be resolved. Many people i know have had theirs resolved in due time, yours will not be different* 🙏
 
-*How To Reach Customer Care*
 
+*HOW TO REACH CUSTOMER CARE*
 Please send a Direct Message to them
 
 *On Instagram* 👇🏻
@@ -108,12 +143,11 @@ https://t.me/racksterliCC
 https://twitter.com/racksterli?s=11
 
 Thank you for contacting Bola ❤️
-
 To go back to the main menu - Type *Back*`,
 
     10: `
 Thank you for Your Patronage  with our Team (Miss Bola Vendor)
-    
+
 Please Join our community  to get updates and information on our availability and also keep you updated on all racksterli news .
 
 https://chat.whatsapp.com/GbmNFgmhhopBwRUhzZkYgQ
@@ -124,16 +158,14 @@ We hate to keep you waiting 🙏🏻
 
 Welcome on board 👊🏻
 
-Kindly type FULL if you are unable to join this group, so i can give you a new link☺️
+Kindly type *FULL* if you are unable to join this group, so i can give you a new link☺️
 
 Thank you for contacting Bola❤️
-
 To go back to the main menu - Type *Back*`,
 
     9: `
-If your code is saying is saying *User already exists* please follow the following steps 
-    
-Please note that you are to change the USERNAME and not your full name or any other information.
+*USER ALREADY EXIST*
+Please note that when this occurs, you are to change the *USERNAME* and not your full name or any other information.
 
 - Change the username you first tried 
 - Try adding a number or special character to your username 
@@ -141,20 +173,32 @@ Please note that you are to change the USERNAME and not your full name or any ot
 
 One of the above options will definitely work. 
 
-Thank you for contacting Bola.❤️
+*FORGOTTEN PASSWORD*
+- Go to the site and click on forgot password to reset. 
 
+If this doesn’t work, please drop the following details 👇🏻
+- Username 
+- Phone number used
+- Code used
+
+*INVALID OR USED CODE/INVALID TOKEN*
+- Use Chrome browser
+- Clear your browser 
+- Copy and paste the code
+
+If this doesn’t work, Please drop the Coupon code below
+
+Thank you for contacting Bola.❤️
 To go back to the main menu - Type *Back*`,
 
     5: `
 Please Follow the links Below to know more about Racksterli 
-    
-*To Read About us* 👇🏻
 
+*To Read About us* 👇🏻
 https://racksterli.com/post/how-it-works
 
 *To Watch a video* 👇🏻
 https://youtu.be/oT9KxakcfAE
-
 
 *Our APP*
 Download our mobile app from the Google playstore for android users only
@@ -163,12 +207,10 @@ Download our mobile app from the Google playstore for android users only
 The IOS version is coming soon for iPhones
 
 Thank you for contacting Bola ❤️
-
 To go back to the main menu - Type *Back*`,
 
     4: `
 *OUR WORKING  HOURS*
-    
 We are officially available everyday between the following hours.
 
 *MONDAYS - SATURDAYS*
@@ -181,9 +223,6 @@ No  break
 
 We do not advise anyone to proceed racksterli registrations between  12:00am - 6:00am. This is because Racksterli has -1 GMT. When you register at this time,  your account will take d date of the previous day and you will only be able to share  once. Hence, you have automatically missed a day of posting.
 
-Please note that, when we resume we already have many messages pending for us and we beg for your patience and understanding till we get to your chat🙏
-
-
 *DAYS OFF*
 Every member on this team, Take days off to take some rest. Please take note of the days below. 
 
@@ -193,31 +232,30 @@ LISA - Thursdays
 QUWAM - Fridays
 PAUL - Only Fully available on Saturdays
 BOLA - Saturdays and Saturdays 
+
 Thank you for contacting Bola ❤️
 To go back to the main menu - Type *Back*`,
 
     2: `
 *AVAILABLE PACKAGES AND EARNINGS AFTER 30DAYS IN BRACKET*
-    
-- STANDARD: N14,000 (N21,660)
-- PREMIUM: N28,000 (N44,460)
-- PLATINUM: N56,000 (N88,920)
-- GOLD: N112,000 (N177,840)
-- DIAMOND: N280,000 (N444,600)
-- RUBY: N560,000 (N848,388)
-- EMERALD: N1,120,000 (N1,690,000)
-- PEARL: N2,800,000 (N4,177,340)
-- JASPER: N5,000,000 (N7,379,600)
+
+- *Standard* : N14,000 (N21,660)
+- *Premium* : N28,000 (N44,460)
+- *Platinum* : N56,000 (N88,920)
+- *Gold* : N112,000 (N177,840)
+- *Diamond* : N280,000 (N444,600)
+- *Ruby* : N560,000 (N848,388)
+- *Emerald* : N1,120,000 (N1,690,000)
+- *Pearl* : N2,800,000 (N4,177,340)
+- *Jasper* : N5,000,000 (N7,379,600)
 
 Please note that to have this full earning, you must perform the task of sharing *Sponsored Posts Daily* without missing a day!
 
 Thank you for contacting Bola ❤️
-
 To go back to the main menu - Type *Back*`,
 
     3: `
 The following accounts are the only verified account numbers given to me (Bola) and all my personal assistants by  Racksterli Establishment. 
-
 Please do not pay to any other account number not listed here🙏
 
 *FOR TUNJI*
@@ -225,7 +263,6 @@ Account number: 2289241224
 Bank name: ZENITH
 Account type: SAVINGS 
 Full name: YUSUFF OLATUNJI ABDULFATAI
-
 
 *FOR JAKE* 
 Account number: 2289241248
@@ -256,55 +293,43 @@ Account number: 1007406932
 Bank name: ZENITH 
 Account type: CURRENT 
 Full name: OLABODE OLATUNDUN OYEBOLA
-
+    
 Thank you for contacting Bola ❤️
-
 To go back to the main menu - Type *Back*`,
 
     6: `
-*How to Refer*
-    
+*HOW TO REFER*
 - Your downline buys his/her code from a vendor 
-
 - Give your downline your referral link (you will find this on your dashboard)
-
 - Your downline MUST click the link and register through it. 
 (Please I recommend this is done on the site using Chrome Browser)
-
 - Tell your downline your username and ask him to confirm that he sees it before he clicks on submit. 
 
 If all steps are followed duely, congrats on your new referral 👍🏻
 
-*How to Upgrade*
+*HOW TO UPGRADE*
 - Buy a code higher than the package you did before 
-
 - Click on upgrade
-
 - Choose your new package 
-
 - Input the new code
-
 - Submit and refresh
 
 Please Note that, you can not upgrade an account to a lower package than what you did before. 
 
-Par adventure you want to do a *Lower Package*
-
+Par adventure you want to do a *LOWER PACKAGE*
 - Buy code and register afresh with a different username and email
 
-This is because racksterli does not support a downgrade of accounts. 
+_This is because racksterli does not support a downgrade of accounts._
 
 Thank you for contacting Bola ❤️
-
 To go back to the main menu - Type *Back*`,
 
     7: `
-Yes, Racksterli now  allows you to open   As many accounts as you want regardless of the package you want to do. 
-    
+Yes, Racksterli now  allows you to open As many accounts as you want regardless of the package you want to do. 
+
 This means that you can open standard,premium,platinum,gold,diamond,ruby e.t.c at any time or at the same time. 
 
-For your new accounts 
-
+*FOR YOUR NEW ACCOUNTS*
 - Please register like you did with your first account 
 
 - Your full name and every important information remains the same. 
@@ -314,8 +339,7 @@ For your new accounts
 - Yes, you can use the same account number and phone number for all your accounts 
 
 Thank you for contacting Bola❤️
-
-To go back to the main menu Type *Back* (i think you should add this to at the end of the other responses)`,
+To go back to the main menu Type *Back*`,
   };
   return answer;
 };

@@ -43,18 +43,33 @@ exports.interactive_reply = async (conn, chat, number) => {
     await conn.sendMessage(number, anwer["welcome"], MessageType.text);
   } else if (chat.toLowerCase().trim() === "bola") {
     const bola = `
-Thank you for contacting Bola, Please type your question below.\n
+Thank you for contacting Bola, Please type your question below.\n 
 Kindly be patient for my reply, i will be with you shortly ❤️`;
 
-    await redis.set(`${number}`, `dont_reply`, "EX", 60 * 60 * 24);
+    await redis.set(`${number}`, `dont_reply`, "EX", 60 * 60 * 1);
     await conn.sendMessage(number, bola, MessageType.text);
   } else if (chat.toLowerCase().trim() === "full") {
-    await redis.set(`${number}`, "dont_reply", "EX", 60 * 60 * 24);
+    await redis.set(`${number}`, "dont_reply", "EX", 60 * 60 * 1);
+  } else if (chat.toLowerCase().trim() === "confirm payment") {
+    await conn.chatRead(number);
+    await redis.set(`${number}`, "confirm", "EX", 60 * 60 * 1);
+    await conn.sendMessage(number, anwer["confirm"], MessageType.text);
   } else if (chat.match(pattern)) {
     await conn.chatRead(number);
     const reply_num = anwer[`${chat}`];
     if (reply_num) {
       await conn.sendMessage(number, reply_num, MessageType.text);
+    }else{
+      await conn.chatRead(number);
+      await conn.sendMessage(number, `Inavlid message option please use any of the follwing commands`, MessageType.text);
+      await conn.sendMessage(number, anwer["welcome"], MessageType.text);  
+    }
+  }else{
+    if(chat){
+      await conn.chatRead(number);
+      await conn.sendMessage(number, `Inavlid message option please use any of the follwing commands`, MessageType.text);
+      await conn.sendMessage(number, anwer["welcome"], MessageType.text);
+      return
     }
   }
 };

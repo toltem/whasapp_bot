@@ -2,7 +2,6 @@ const REDIS_URL = process.env.REDIS_URL || "redis://127.0.0.1:6379";
 const Redis = require("ioredis");
 const redis = new Redis(REDIS_URL);
 var wa_interact = require("./whatsapp");
-const pattern = new RegExp("^[0-9]+$");
 var { MessageType } = require("@adiwajshing/baileys");
 const reply = require("./answers");
 
@@ -39,31 +38,27 @@ exports.hydrate = async (conn) => {
           if (state === null && msg_history.messages.length > 1) {
             //mark message as read
             await conn.chatRead(msg.jid);
-            await redis.set(`${msg.jid}`, "welcome", "EX", 60 * 60 * 24);
+            await redis.set(`${msg.jid}`, "welcome", "EX", 60 * 60 * 1);
             await conn.sendMessage(msg.jid, old_customers+`\n\n${anwer["welcome"]}`, MessageType.text);
             return
           } else if (state === null && msg_history.messages.length < 2) {
             //mark message as read
             await conn.chatRead(msg.jid);
-            await redis.set(`${msg.jid}`, "welcome", "EX", 60 * 60 * 24);
+            await redis.set(`${msg.jid}`, "welcome", "EX", 60 * 60 * 1);
             await conn.sendMessage(msg.jid, new_customers+`\n\n${anwer["welcome"]}`, MessageType.text);
             return
           } else if (state === "welcome") {
             //get converstion
             let chat = msg.messages.array[0].message.conversation;
-            if (
-              chat.match(pattern) ||
-              chat.toLowerCase().trim() === "bola" ||
-              chat.toLowerCase().trim() === "back" ||
-              chat.toLowerCase().trim() === "full"
-            ) {
               wa_interact.interactive_reply(conn, chat, msg.jid);
-            }
             return
-          } else if (state === "dont_reply") {
+          }else if(state==="confirm"){
+            await conn.sendMessage(msg.jid, anwer["reply_confirm"], MessageType.text)
+            await redis.set(`${msg.jid}`, "dont_reply", "EX", 60 * 60 * 1);
+          }
+          else if (state === "dont_reply") {
             return
           } else {
-            await conn.chatRead(msg.jid);
             return
           }
         }
