@@ -3,6 +3,7 @@ const redis = new Redis();
 var wa_interact = require("./whatsapp");
 const pattern = new RegExp("^[0-9]+$");
 var { MessageType } = require("@adiwajshing/baileys");
+const reply = require("./answers");
 
 exports.hydrate = async (conn) => {
   try {
@@ -31,19 +32,20 @@ exports.hydrate = async (conn) => {
         if (msg.messages!==undefined) {
           const state = await redis.get(`${msg.jid}`);
           const msg_history = await conn.loadMessages(msg.jid, 10);
+          const anwer = reply.answers();
 
           //if state is null and has chat history
           if (state === null && msg_history.messages.length > 1) {
             //mark message as read
             await conn.chatRead(msg.jid);
             await redis.set(`${msg.jid}`, "welcome", "EX", 60 * 60 * 24);
-            await conn.sendMessage(msg.jid, old_customers, MessageType.text);
+            await conn.sendMessage(msg.jid, old_customers+`\n\n${anwer["welcome"]}`, MessageType.text);
             return
           } else if (state === null && msg_history.messages.length < 2) {
             //mark message as read
             await conn.chatRead(msg.jid);
             await redis.set(`${msg.jid}`, "welcome", "EX", 60 * 60 * 24);
-            await conn.sendMessage(msg.jid, new_customers, MessageType.text);
+            await conn.sendMessage(msg.jid, new_customers+`\n\n${anwer["welcome"]}`, MessageType.text);
             return
           } else if (state === "welcome") {
             //get converstion

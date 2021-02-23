@@ -41,8 +41,9 @@ exports.interactive_reply = async (conn, chat, number) => {
     await conn.chatRead(number);
     await conn.sendMessage(number, anwer["welcome"], MessageType.text);
   } else if (chat.toLowerCase().trim() === "bola") {
-    const bola = `Thank you for contacting Bola, Please type your question below.\n
-    Kindly be patient for my reply, i will be with you shortly ❤️`;
+    const bola = `
+Thank you for contacting Bola, Please type your question below.\n
+Kindly be patient for my reply, i will be with you shortly ❤️`;
 
     await redis.set(`${number}`, `dont_reply`, "EX", 60 * 60 * 24);
     await conn.sendMessage(number, bola, MessageType.text);
