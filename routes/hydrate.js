@@ -20,16 +20,16 @@ exports.hydrate = async (conn) => {
           return;
         }
       }
+      if (msg.messages) {
 
       if (
         msg.jid.includes("@g.us") ||
         msg.jid.includes("status") ||
-        msg.jid === conn.user.jid ||
+        msg.messages.array[0].key.fromMe ||
         msg.jid.includes("broadcast")
       ) {
-        //do nothing
+        return
       } else {
-        if (msg.messages!==undefined) {
           const state = await redis.get(`${msg.jid}`);
           const msg_history = await conn.loadMessages(msg.jid, 10);
           const anwer = reply.answers();
@@ -61,8 +61,8 @@ exports.hydrate = async (conn) => {
           } else {
             return
           }
-        }
       }
+    }
     });
   } catch (e) {
     console.log(e);
