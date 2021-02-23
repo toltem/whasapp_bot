@@ -14,8 +14,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+const REDIS_URL = process.env.REDIS_URL || "redis://127.0.0.1:6379";
 const Redis = require("ioredis");
-const redis = new Redis();
+const redis = new Redis(REDIS_URL);
 const hydrate = require("./routes/hydrate");
 rehydrate();
 

@@ -2,8 +2,9 @@ var express = require("express");
 var router = express.Router();
 var { WAConnection } = require("@adiwajshing/baileys");
 const Pusher = require("pusher");
+const REDIS_URL = process.env.REDIS_URL || "redis://127.0.0.1:6379";
 const Redis = require("ioredis");
-const redis = new Redis();
+const redis = new Redis(REDIS_URL);
 const wa_client = require("./whatsapp");
 
 /* GET home page. */

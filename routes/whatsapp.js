@@ -1,7 +1,8 @@
 var { MessageType } = require("@adiwajshing/baileys");
 const pattern = new RegExp("^[0-9]+$");
+const REDIS_URL = process.env.REDIS_URL || "redis://127.0.0.1:6379";
 const Redis = require("ioredis");
-const redis = new Redis();
+const redis = new Redis(REDIS_URL);
 const reply = require("./answers");
 
 var hydrate = require("./hydrate");
