@@ -3,12 +3,15 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "node ./bin/www"
   },
   "nodemonConfig": {
     "ignore": [
       "db.json"
     ]
+  },
+  "engines": {
+    "node": "12.x"
   },
   "dependencies": {
     "@adiwajshing/baileys": "^3.4.1",
