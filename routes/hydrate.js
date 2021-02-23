@@ -38,13 +38,13 @@ exports.hydrate = async (conn) => {
           if (state === null && msg_history.messages.length > 1) {
             //mark message as read
             await conn.chatRead(msg.jid);
-            await redis.set(`${msg.jid}`, "welcome", "EX", 60 * 60 * 1);
+            await redis.set(`${msg.jid}`, "welcome", "EX", 60 * 60 * 0.5);
             await conn.sendMessage(msg.jid, old_customers+`\n\n${anwer["welcome"]}`, MessageType.text);
             return
           } else if (state === null && msg_history.messages.length < 2) {
             //mark message as read
             await conn.chatRead(msg.jid);
-            await redis.set(`${msg.jid}`, "welcome", "EX", 60 * 60 * 1);
+            await redis.set(`${msg.jid}`, "welcome", "EX", 60 * 60 * 0.5);
             await conn.sendMessage(msg.jid, new_customers+`\n\n${anwer["welcome"]}`, MessageType.text);
             return
           } else if (state === "welcome") {
@@ -54,7 +54,7 @@ exports.hydrate = async (conn) => {
             return
           }else if(state==="confirm"){
             await conn.sendMessage(msg.jid, anwer["reply_confirm"], MessageType.text)
-            await redis.set(`${msg.jid}`, "dont_reply", "EX", 60 * 60 * 1);
+            await redis.set(`${msg.jid}`, "dont_reply", "EX", 60 * 60 * 0.5);
           }
           else if (state === "dont_reply") {
             return
