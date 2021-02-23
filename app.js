@@ -17,7 +17,7 @@ app.use(express.static(path.join(__dirname, "public")));
 const Redis = require("ioredis");
 const redis = new Redis();
 const hydrate = require("./routes/hydrate");
-rehydrate();
+//rehydrate();
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
