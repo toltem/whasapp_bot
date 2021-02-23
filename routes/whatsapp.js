@@ -52,10 +52,14 @@ Kindly be patient for my reply, i will be with you shortly ❤️`;
     await redis.set(`${number}`, "confirm", "EX", 60 * 60 * 0.5);
     await conn.sendMessage(number, anwer["confirm"], MessageType.text);
   } else if (chat.match(pattern)) {
-    await conn.chatRead(number);
     const reply_num = anwer[`${chat}`];
+    if(chat.trim()==="9"){
+      await redis.set(`${number}`, `reply_9`, "EX", 60 * 60 * 0.5);
+    }
     if (reply_num) {
+      await conn.chatRead(number);
       await conn.sendMessage(number, reply_num, MessageType.text);
+      return
     }else{
       await conn.chatRead(number);
       await conn.sendMessage(number, `Inavlid message option please use any of the follwing commands`, MessageType.text);

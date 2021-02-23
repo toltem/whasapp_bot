@@ -63,6 +63,13 @@ _Please note that repeated messages and calls only delays my response to you bec
 Thank you❤️
 `,
 
+reply_9:`
+I have received your complaint and i will work on this and get back to you. 
+
+Please be patient for my reply. 
+
+Thank you.❤️`,
+
     1: `
 For a very fast Response, please contact any of my personal assistants. (Click the link in front of their names)
 
@@ -306,6 +313,11 @@ To go back to the main menu - Type *Back*`,
 - Tell your downline your username and ask him to confirm that he sees it before he clicks on submit. 
 
 If all steps are followed duely, congrats on your new referral 👍🏻
+
+*HOW TO RENEW*
+- Buy a new code (same package you did before)
+- Put code in the box
+- Click renew
 
 *HOW TO UPGRADE*
 - Buy a code higher than the package you did before 

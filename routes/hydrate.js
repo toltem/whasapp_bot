@@ -73,6 +73,13 @@ exports.hydrate = async (conn) => {
               MessageType.text
             );
             await redis.set(`${msg.jid}`, "dont_reply", "EX", 60 * 60 * 0.5);
+          }else if(state==="reply_9"){
+            await conn.sendMessage(
+              msg.jid,
+              anwer["reply_9"],
+              MessageType.text
+            );
+            await redis.set(`${msg.jid}`, "dont_reply", "EX", 60 * 60 * 0.5);
           } else if (state === "dont_reply") {
             return;
           } else {
