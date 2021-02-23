@@ -38,10 +38,7 @@ exports.whatsapp = async (conn, req, res) => {
 
 exports.interactive_reply = async (conn, chat, number) => {
   const anwer = reply.answers();
-  if (chat.toLowerCase().trim() === "back") {
-    await conn.chatRead(number);
-    await conn.sendMessage(number, anwer["welcome"], MessageType.text);
-  } else if (chat.toLowerCase().trim() === "bola") {
+   if (chat.toLowerCase().trim() === "bola") {
     const bola = `
 Thank you for contacting Bola, Please type your question below.\n 
 Kindly be patient for my reply, i will be with you shortly ❤️`;

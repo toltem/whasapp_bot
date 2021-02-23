@@ -21,15 +21,14 @@ exports.hydrate = async (conn) => {
         }
       }
       if (msg.messages) {
-
-      if (
-        msg.jid.includes("@g.us") ||
-        msg.jid.includes("status") ||
-        msg.messages.array[0].key.fromMe ||
-        msg.jid.includes("broadcast")
-      ) {
-        return
-      } else {
+        if (
+          msg.jid.includes("@g.us") ||
+          msg.jid.includes("status") ||
+          msg.messages.array[0].key.fromMe ||
+          msg.jid.includes("broadcast")
+        ) {
+          return;
+        } else {
           const state = await redis.get(`${msg.jid}`);
           const msg_history = await conn.loadMessages(msg.jid, 10);
           const anwer = reply.answers();
@@ -39,30 +38,48 @@ exports.hydrate = async (conn) => {
             //mark message as read
             await conn.chatRead(msg.jid);
             await redis.set(`${msg.jid}`, "welcome", "EX", 60 * 60 * 0.5);
-            await conn.sendMessage(msg.jid, old_customers+`\n\n${anwer["welcome"]}`, MessageType.text);
-            return
+            await conn.sendMessage(
+              msg.jid,
+              old_customers + `\n\n${anwer["welcome"]}`,
+              MessageType.text
+            );
+            return;
           } else if (state === null && msg_history.messages.length < 2) {
             //mark message as read
             await conn.chatRead(msg.jid);
             await redis.set(`${msg.jid}`, "welcome", "EX", 60 * 60 * 0.5);
-            await conn.sendMessage(msg.jid, new_customers+`\n\n${anwer["welcome"]}`, MessageType.text);
-            return
+            await conn.sendMessage(
+              msg.jid,
+              new_customers + `\n\n${anwer["welcome"]}`,
+              MessageType.text
+            );
+            return;
+          } else if (
+            msg.messages.array[0].message.conversation.toLowerCase().trim() ===
+            "back"
+          ) {
+            await conn.chatRead(msg.jid);
+            await conn.sendMessage(msg.jid, anwer["welcome"], MessageType.text);
+            await redis.set(`${msg.jid}`, "welcome", "EX", 60 * 60 * 0.5);
           } else if (state === "welcome") {
             //get converstion
             let chat = msg.messages.array[0].message.conversation;
-              wa_interact.interactive_reply(conn, chat, msg.jid);
-            return
-          }else if(state==="confirm"){
-            await conn.sendMessage(msg.jid, anwer["reply_confirm"], MessageType.text)
+            wa_interact.interactive_reply(conn, chat, msg.jid);
+            return;
+          } else if (state === "confirm") {
+            await conn.sendMessage(
+              msg.jid,
+              anwer["reply_confirm"],
+              MessageType.text
+            );
             await redis.set(`${msg.jid}`, "dont_reply", "EX", 60 * 60 * 0.5);
-          }
-          else if (state === "dont_reply") {
-            return
+          } else if (state === "dont_reply") {
+            return;
           } else {
-            return
+            return;
           }
+        }
       }
-    }
     });
   } catch (e) {
     console.log(e);
