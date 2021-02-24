@@ -36,7 +36,7 @@ exports.hydrate = async (conn) => {
           if (state === null && msg_history.messages.length > 2) {
             //mark message as read
             await conn.chatRead(msg.jid);
-            await redis.set(`${msg.jid}`, "welcome", "EX", 60 * 60 * 24);
+            await redis.set(`${msg.jid}`, "welcome", "EX", 60 * 60 * 12);
             await conn.sendMessage(
               msg.jid,
               old_customers + `\n\n${anwer["welcome"]}`,
@@ -46,7 +46,7 @@ exports.hydrate = async (conn) => {
           } else if (state === null && msg_history.messages.length < 3) {
             //mark message as read
             await conn.chatRead(msg.jid);
-            await redis.set(`${msg.jid}`, "welcome", "EX", 60 * 60 * 24);
+            await redis.set(`${msg.jid}`, "welcome", "EX", 60 * 60 * 12);
             await conn.sendMessage(
               msg.jid,
               new_customers + `\n\n${anwer["welcome"]}`,
@@ -59,7 +59,7 @@ exports.hydrate = async (conn) => {
           ) {
             await conn.chatRead(msg.jid);
             await conn.sendMessage(msg.jid, anwer["welcome"], MessageType.text);
-            await redis.set(`${msg.jid}`, "welcome", "EX", 60 * 60 * 24);
+            await redis.set(`${msg.jid}`, "welcome", "EX", 60 * 60 * 12);
           } else if (state === "welcome") {
             //get converstion
             let chat = msg.messages.array[0].message.conversation;
@@ -71,10 +71,10 @@ exports.hydrate = async (conn) => {
               anwer["reply_confirm"],
               MessageType.text
             );
-            await redis.set(`${msg.jid}`, "dont_reply", "EX", 60 * 60 * 24);
+            await redis.set(`${msg.jid}`, "dont_reply", "EX", 60 * 60 * 12);
           } else if (state === "reply_9") {
             await conn.sendMessage(msg.jid, anwer["reply_9"], MessageType.text);
-            await redis.set(`${msg.jid}`, "dont_reply", "EX", 60 * 60 * 24);
+            await redis.set(`${msg.jid}`, "dont_reply", "EX", 60 * 60 * 12);
           } else if (state === "dont_reply") {
             return;
           } else {

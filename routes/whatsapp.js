@@ -44,18 +44,18 @@ Please Type *BACK* to go back to the main menu`
     const bola = `Thank you for contacting Bola, Please type your question below.\n 
 Kindly be patient for my reply, i will be with you shortly ❤️`;
 
-    await redis.set(`${number}`, `dont_reply`, "EX", 60 * 60 * 24);
+    await redis.set(`${number}`, `dont_reply`, "EX", 60 * 60 * 12);
     await conn.sendMessage(number, bola, MessageType.text);
   } else if (chat.toLowerCase().trim() === "full") {
-    await redis.set(`${number}`, "dont_reply", "EX", 60 * 60 * 24);
+    await redis.set(`${number}`, "dont_reply", "EX", 60 * 60 * 12);
   } else if (chat.toLowerCase().trim() === "confirm payment") {
     await conn.chatRead(number);
-    await redis.set(`${number}`, "confirm", "EX", 60 * 60 * 24);
+    await redis.set(`${number}`, "confirm", "EX", 60 * 60 * 12);
     await conn.sendMessage(number, anwer["confirm"], MessageType.text);
   } else if (chat.match(pattern)) {
     const reply_num = anwer[`${chat}`];
     if(chat.trim()==="9"){
-      await redis.set(`${number}`, `reply_9`, "EX", 60 * 60 * 0.5);
+      await redis.set(`${number}`, `reply_9`, "EX", 60 * 60 * 12);
     }
     if (reply_num) {
       await conn.chatRead(number);
