@@ -1,7 +1,6 @@
 exports.answers = () => {
   const answer = {
-    welcome: `
-To buy code - Type *1*
+    welcome: `To buy code - Type *1*
 Available packages - Type *2*
 Official account numbers - Type *3*
 Working hours and Days off  - Type *4*
@@ -20,8 +19,7 @@ For other inquires from me - Type *Bola*
         
 Thank you for contacting Bola ❤️`,
 
-confirm:`
-Please note that it doesn’t matter who is using the code or who you are paying for. All information required is that of the person that sent money to my account. 
+confirm:`Please note that it doesn’t matter who is using the code or who you are paying for. All information required is that of the person that sent money to my account. 
 
 To comfirm your payment Kindly send the following:
 
@@ -51,8 +49,7 @@ _There’s alot of traffic here but i will attend to you_ ❤️
 
 To go back to the main menu - Type *Back*`,
 
-reply_confirm:`
-Thanks alot for your patronage 
+reply_confirm:`Thanks alot for your patronage 
 
 Kindly be patient for me to confirm your payment and give you your code, i will be with you shortly ❤️
 
@@ -63,15 +60,13 @@ _Please note that repeated messages and calls only delays my response to you bec
 Thank you❤️
 `,
 
-reply_9:`
-I have received your complaint and i will work on this and get back to you. 
+reply_9:`I have received your complaint and i will work on this and get back to you. 
 
 Please be patient for my reply. 
 
 Thank you.❤️`,
 
-    1: `
-For a very fast Response, please contact any of my personal assistants. (Click the link in front of their names)
+    1: `For a very fast Response, please contact any of my personal assistants. (Click the link in front of their names)
 
 *TUNJI* tinyurl.com/mrfpkf18
 
@@ -106,8 +101,7 @@ Please Type *CONFIRM PAYMENT* immediately you have made your payment.
 Thank you for contacting Bola ❤️
 To go back to the main menu - Type *Back*`,
 
-    8: `
-*BEST TIME TO CASHOUT*
+    8: `*BEST TIME TO CASHOUT*
 - Logout 
 - During the week, Check between 8:00am-10:00am
 - During weekends, check between 1:00am-8:30am
@@ -152,8 +146,7 @@ https://twitter.com/racksterli?s=11
 Thank you for contacting Bola ❤️
 To go back to the main menu - Type *Back*`,
 
-    10: `
-Thank you for Your Patronage  with our Team (Miss Bola Vendor)
+    10: `Thank you for Your Patronage  with our Team (Miss Bola Vendor)
 
 Please Join our community  to get updates and information on our availability and also keep you updated on all racksterli news .
 
@@ -170,8 +163,7 @@ Kindly type *FULL* if you are unable to join this group, so i can give you a new
 Thank you for contacting Bola❤️
 To go back to the main menu - Type *Back*`,
 
-    9: `
-*USER ALREADY EXIST*
+    9: `*USER ALREADY EXIST*
 Please note that when this occurs, you are to change the *USERNAME* and not your full name or any other information.
 
 - Change the username you first tried 
@@ -198,8 +190,7 @@ If this doesn’t work, Please drop the Coupon code below
 Thank you for contacting Bola.❤️
 To go back to the main menu - Type *Back*`,
 
-    5: `
-Please Follow the links Below to know more about Racksterli 
+    5: `Please Follow the links Below to know more about Racksterli 
 
 *To Read About us* 👇🏻
 https://racksterli.com/post/how-it-works
@@ -216,8 +207,7 @@ The IOS version is coming soon for iPhones
 Thank you for contacting Bola ❤️
 To go back to the main menu - Type *Back*`,
 
-    4: `
-*OUR WORKING  HOURS*
+    4: `*OUR WORKING  HOURS*
 We are officially available everyday between the following hours.
 
 *MONDAYS - SATURDAYS*
@@ -243,8 +233,7 @@ BOLA - Saturdays and Saturdays
 Thank you for contacting Bola ❤️
 To go back to the main menu - Type *Back*`,
 
-    2: `
-*AVAILABLE PACKAGES AND EARNINGS AFTER 30DAYS IN BRACKET*
+    2: `*AVAILABLE PACKAGES AND EARNINGS AFTER 30DAYS IN BRACKET*
 
 - *Standard* : N14,000 (N21,660)
 - *Premium* : N28,000 (N44,460)
@@ -261,8 +250,7 @@ Please note that to have this full earning, you must perform the task of sharing
 Thank you for contacting Bola ❤️
 To go back to the main menu - Type *Back*`,
 
-    3: `
-The following accounts are the only verified account numbers given to me (Bola) and all my personal assistants by  Racksterli Establishment. 
+    3: `The following accounts are the only verified account numbers given to me (Bola) and all my personal assistants by  Racksterli Establishment. 
 Please do not pay to any other account number not listed here🙏
 
 *FOR TUNJI*
@@ -304,8 +292,7 @@ Full name: OLABODE OLATUNDUN OYEBOLA
 Thank you for contacting Bola ❤️
 To go back to the main menu - Type *Back*`,
 
-    6: `
-*HOW TO REFER*
+    6: `*HOW TO REFER*
 - Your downline buys his/her code from a vendor 
 - Give your downline your referral link (you will find this on your dashboard)
 - Your downline MUST click the link and register through it. 
@@ -336,8 +323,7 @@ _This is because racksterli does not support a downgrade of accounts._
 Thank you for contacting Bola ❤️
 To go back to the main menu - Type *Back*`,
 
-    7: `
-Yes, Racksterli now  allows you to open As many accounts as you want regardless of the package you want to do. 
+    7: `Yes, Racksterli now  allows you to open As many accounts as you want regardless of the package you want to do. 
 
 This means that you can open standard,premium,platinum,gold,diamond,ruby e.t.c at any time or at the same time. 
 

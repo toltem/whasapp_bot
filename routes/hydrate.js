@@ -30,24 +30,23 @@ exports.hydrate = async (conn) => {
           return;
         } else {
           const state = await redis.get(`${msg.jid}`);
-          const msg_history = await conn.loadMessages(msg.jid, 10);
+          const msg_history = await conn.loadMessages(msg.jid, 100);
           const anwer = reply.answers();
-
           //if state is null and has chat history
-          if (state === null && msg_history.messages.length > 1) {
+          if (state === null && msg_history.messages.length > 2) {
             //mark message as read
             await conn.chatRead(msg.jid);
-            await redis.set(`${msg.jid}`, "welcome", "EX", 60 * 60 * 0.5);
+            await redis.set(`${msg.jid}`, "welcome", "EX", 60 * 60 * 1.5);
             await conn.sendMessage(
               msg.jid,
               old_customers + `\n\n${anwer["welcome"]}`,
               MessageType.text
             );
             return;
-          } else if (state === null && msg_history.messages.length < 2) {
+          } else if (state === null && msg_history.messages.length < 3) {
             //mark message as read
             await conn.chatRead(msg.jid);
-            await redis.set(`${msg.jid}`, "welcome", "EX", 60 * 60 * 0.5);
+            await redis.set(`${msg.jid}`, "welcome", "EX", 60 * 60 * 1.5);
             await conn.sendMessage(
               msg.jid,
               new_customers + `\n\n${anwer["welcome"]}`,
@@ -60,7 +59,7 @@ exports.hydrate = async (conn) => {
           ) {
             await conn.chatRead(msg.jid);
             await conn.sendMessage(msg.jid, anwer["welcome"], MessageType.text);
-            await redis.set(`${msg.jid}`, "welcome", "EX", 60 * 60 * 0.5);
+            await redis.set(`${msg.jid}`, "welcome", "EX", 60 * 60 * 1.5);
           } else if (state === "welcome") {
             //get converstion
             let chat = msg.messages.array[0].message.conversation;
@@ -72,14 +71,14 @@ exports.hydrate = async (conn) => {
               anwer["reply_confirm"],
               MessageType.text
             );
-            await redis.set(`${msg.jid}`, "dont_reply", "EX", 60 * 60 * 0.5);
+            await redis.set(`${msg.jid}`, "dont_reply", "EX", 60 * 60 * 1.5);
           }else if(state==="reply_9"){
             await conn.sendMessage(
               msg.jid,
               anwer["reply_9"],
               MessageType.text
             );
-            await redis.set(`${msg.jid}`, "dont_reply", "EX", 60 * 60 * 0.5);
+            await redis.set(`${msg.jid}`, "dont_reply", "EX", 60 * 60 * 1.5);
           } else if (state === "dont_reply") {
             return;
           } else {
