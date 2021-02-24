@@ -66,7 +66,7 @@ Kindly be patient for my reply, i will be with you shortly ❤️`;
       await conn.sendMessage(number, bad_reply, MessageType.text);
     }
   }else{
-    if(chat){
+    if(chat && (await redis.get(`${number}`))==="welcome"){
       await conn.chatRead(number);
       await conn.sendMessage(number, bad_reply, MessageType.text);
       return
