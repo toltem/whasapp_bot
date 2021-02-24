@@ -38,6 +38,9 @@ exports.whatsapp = async (conn, req, res) => {
 
 exports.interactive_reply = async (conn, chat, number) => {
   const anwer = reply.answers();
+  const bad_reply=`
+Inavlid message option ‼️\n
+Please Type *BACK* to go back to the main menu`
    if (chat.toLowerCase().trim() === "bola") {
     const bola = `
 Thank you for contacting Bola, Please type your question below.\n 
@@ -62,14 +65,12 @@ Kindly be patient for my reply, i will be with you shortly ❤️`;
       return
     }else{
       await conn.chatRead(number);
-      await conn.sendMessage(number, `Inavlid message option please use any of the follwing commands`, MessageType.text);
-      await conn.sendMessage(number, anwer["welcome"], MessageType.text);  
+      await conn.sendMessage(number, bad_reply, MessageType.text);
     }
   }else{
     if(chat){
       await conn.chatRead(number);
-      await conn.sendMessage(number, `Inavlid message option please use any of the follwing commands`, MessageType.text);
-      await conn.sendMessage(number, anwer["welcome"], MessageType.text);
+      await conn.sendMessage(number, bad_reply, MessageType.text);
       return
     }
   }
