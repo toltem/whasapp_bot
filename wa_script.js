@@ -1,7 +1,6 @@
 var { WAConnection, MessageType } = require("@adiwajshing/baileys");
 const Redis = require("ioredis");
 const redis = new Redis();
-console.log(process.argv)
 run()
 
 async function run(){
@@ -18,18 +17,12 @@ async function run(){
           
             conn.on("chat-update", async (msg) => {
               if(msg.messages){
-                //get chats
+               console.log(conn.user.jid)
+                console.log(msg.messages.array[0].key.remoteJid)
                 console.log(msg.messages.array[0].message.conversation)
                 await conn.chatRead (msg.jid) 
               }
-              const messages = await conn.loadMessages (msg.jid, 300000)
-              //1 for new users
-              console.log("got", messages.messages.length)
-            //   const id = '1234-123@g.us'
-            // const messageID = 'AHASHH123123AHGA' // id of the message you want to read
-
-            // await conn.chatRead (id) 
-              //avoid sending messages to group chat status, self or broadcast
+              
               if (
                 msg.jid.includes("@g.us") ||
                 msg.jid.includes("status") ||

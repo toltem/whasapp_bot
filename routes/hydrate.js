@@ -21,6 +21,16 @@ exports.hydrate = async (conn) => {
         }
       }
       if (msg.messages) {
+
+        if(msg.messages.array[0].key.fromMe && msg.messages.array[0].message.conversation.toLowerCase().trim()==="stop"){
+          await redis.set(`${msg.messages.array[0].key.remoteJid}`, "dont_reply", "EX", 60 * 60 * 12);
+          return 
+        }
+
+        if(msg.messages.array[0].key.fromMe && msg.messages.array[0].message.conversation.toLowerCase().trim()==="continue"){
+          await redis.set(`${msg.messages.array[0].key.remoteJid}`, "welcome", "EX", 60 * 60 * 12);
+          return 
+        }
         if (
           msg.jid.includes("@g.us") ||
           msg.jid.includes("status") ||
