@@ -1,23 +1,6 @@
 exports.answers = () => {
   const answer = {
-    welcome: `To buy code - Type *1*
-Available packages - Type *2*
-Official account numbers - Type *3*
-Working hours and Days off  - Type *4*
-Know more About Racksterli - Type *5*
-How to refer/upgrade/renew - Type *6*
-How to do multiple accounts - Type *7*
-Cash out issues - Type *8*
-Issues with your Code/Password - Type *9*
-Join my group/community - Type *10*
-For other inquires from me - Type *Bola*
-        
-*IMPORTANT TO NOTE* ‼️
-- Your bank name and Full name you used in registering must tally at all times. 
-( _at least one name must tally_ )
-- Do not use a student Account 
-        
-Thank you for contacting Bola ❤️`,
+    welcome: `Just do nothing ❤️. This Bot works!`,
 
 confirm:`Please note that it doesn’t matter who is using the code or who you are paying for. All information required is that of the person that sent money to my account. 
 
