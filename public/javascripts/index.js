@@ -7,7 +7,7 @@ let bot_status = document.getElementById("bot_info");
 
 getData();
 //update qr code on web socket recieve
-var pusher = new Pusher("0fdf0851bfed97e22bf0", {
+var pusher = new Pusher("dc1abb43a4d525e68e64", {
   cluster: "eu",
 });
 var channel = pusher.subscribe("chan");
